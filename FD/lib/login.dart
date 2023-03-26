@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+//hello
+
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
   Future<void> signin(String email, String password) async {
@@ -23,7 +25,7 @@ class LoginPage extends StatefulWidget {
     }
   }
 
-  final TextEditingController _emailController =  TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -38,7 +40,6 @@ class _LoginPageState extends State<LoginPage> {
         body: {
           'email': email,
           'password': password,
-
         },
       );
       if (response.statusCode == 200) {
@@ -50,12 +51,13 @@ class _LoginPageState extends State<LoginPage> {
       print('Error: $error');
     }
   }
-  final TextEditingController _emailController =  TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;  //width
-    double h = MediaQuery.of(context).size.height;  //height
+    double w = MediaQuery.of(context).size.width; //width
+    double h = MediaQuery.of(context).size.height; //height
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -65,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
                 //color: Colors.cyan.shade50,
                 width: w,
-                height: h*0.3,
+                height: h * 0.3,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(
@@ -83,21 +85,25 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("HELLO,",
+                  Text(
+                    "HELLO,",
                     style: TextStyle(
                       color: Colors.blue.shade600,
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("sign into your account",
+                  Text(
+                    "sign into your account",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.normal,
                       color: Colors.cyan.shade400,
                     ),
                   ),
-                  SizedBox(height: 50,),
+                  SizedBox(
+                    height: 50,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -138,7 +144,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -176,11 +184,12 @@ class _LoginPageState extends State<LoginPage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),
-
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   // Row(
                   //   children: [
                   //     Expanded(child: Container(),),
@@ -196,10 +205,12 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Container(
-              width: w*0.5,
-              height: h*0.08,
+              width: w * 0.5,
+              height: h * 0.08,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
@@ -209,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child:  Center(
+              child: Center(
                 child: ElevatedButton(
                   onPressed: () {
                     String email = _emailController.text.trim();
@@ -217,44 +228,45 @@ class _LoginPageState extends State<LoginPage> {
                     signin(email, password);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent, // set primary color to transparent
+                    primary:
+                        Colors.transparent, // set primary color to transparent
                     elevation: 0, // set elevation of the button
                   ),
-                child: Text("Sign in",
-                  style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                  child: Text(
+                    "Sign in",
+                    style: TextStyle(
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-
                 ),
               ),
             ),
+            SizedBox(
+              height: w * 0.07,
             ),
-
-            SizedBox(height: w*0.07,),
-            RichText(text: TextSpan(
-                text: "Don't have an account?",
-                style: TextStyle(
-                  color: Colors.blue.shade600,
-                  fontSize: 20,
-                ),
-                children: [
-                  TextSpan(
-                    text: " Create",
-                    recognizer: DoubleTapGestureRecognizer()
-                      ..onDoubleTap = () {
-                        Navigator.pushNamed(context, 'register');
-                      },
-                    style: TextStyle(
-                      color: Colors.cyan.shade500,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+            RichText(
+              text: TextSpan(
+                  text: "Don't have an account?",
+                  style: TextStyle(
+                    color: Colors.blue.shade600,
+                    fontSize: 20,
                   ),
-                ]
-
-            ),
+                  children: [
+                    TextSpan(
+                      text: " Create",
+                      recognizer: DoubleTapGestureRecognizer()
+                        ..onDoubleTap = () {
+                          Navigator.pushNamed(context, 'register');
+                        },
+                      style: TextStyle(
+                        color: Colors.cyan.shade500,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ]),
             ),
           ],
         ),
